@@ -14,11 +14,13 @@ import { Movies } from './components/moviePage';
 import { Series } from './components/seriesPage';
 import { Footer } from './components/footer';
 import { FetchRandom } from './tools/fetchdata';
+import { Box, ThemeProvider } from "@mui/material";
+import { themeOptions } from './tools/theme';
 
 
 const App = () => {
 
-  const [isHomePage, setIsHomePage] = useState("");
+  const [isHomePage, setIsHomePage] = useState("landing");
   const [popular, setPopular] = useState([]);
 
   const updatePage = (newState) => {
@@ -37,9 +39,13 @@ const App = () => {
   }, []);
 
   return(
+    <ThemeProvider theme={themeOptions}>
+    <Box bgcolor="#141414">
     <Router>
       <div style={{paddingRight: '16px', paddingLeft: '16px'}}>
-        <NavigationBar updatePage={updatePage}/>
+      {isHomePage !== "landing" && (
+        <NavigationBar updatePage={updatePage} />
+      )}
         <div style={{ paddingTop: '64px' }}>
           {isHomePage === "home" && (
             <FilterBar />
@@ -50,14 +56,18 @@ const App = () => {
         <Route exact path="/" element={<Landing updatePage={updatePage}/>}/>
         <Route exact path="/home" element={<HomePage updatePage={updatePage} movies={popular} />}/>
         <Route exact path="/search" element={<SearchBar updatePage={updatePage}/>}/>
-        <Route exact path="/categories" element={<Categories updatePage={updatePage}/>}/>
+        <Route exact path="/categories" element={<Categories updatePage={updatePage} />}/>
         <Route exact path="/movies" element={<Movies updatePage={updatePage}/>}/>
         <Route exact path="/series" element={<Series updatePage={updatePage}/>}/>
       </Routes>
       <div>
+      {isHomePage !== "landing" && (
         <Footer />
+      )}
       </div>
     </Router>
+    </Box>
+    </ThemeProvider>
   )
 }
 

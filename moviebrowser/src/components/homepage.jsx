@@ -3,7 +3,7 @@ import { FilterBar } from "./filterbar";
 import { useEffect } from "react";
 
 export const HomePage = (props) => {
-  
+
     useEffect(() => {
       props.updatePage("home");
     });
@@ -11,7 +11,7 @@ export const HomePage = (props) => {
     console.log(props.movies);
 
     return (
-      <div style={{ paddingTop: '64px'}}>
+      <div style={{ paddingTop: '12px'}}>
       <Grid container spacing={2}>
         {props.movies.map(movie => (
           <Grid item xs={12} sm={6} md={4} key={movie.id}>

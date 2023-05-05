@@ -43,3 +43,20 @@ export const fetchCategoryImage = async (id) => {
       throw error;
     }
   };
+
+export const fetchContent = async (id, type) => {
+    let apiUrl = "";
+    if(type === 'movie') {
+        apiUrl = `https://api.themoviedb.org/3/movie/${id}`
+    } else {
+        apiUrl = `https://api.themoviedb.org/3/tv/${id}`
+    }
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data;
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}

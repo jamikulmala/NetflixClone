@@ -16,6 +16,7 @@ import { Footer } from './components/footer';
 import { FetchRandom } from './tools/fetchdata';
 import { Box, ThemeProvider } from "@mui/material";
 import { themeOptions } from './tools/theme';
+import { TitlePage } from './components/titlepage';
 
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
         <Route exact path="/categories" element={<Categories updatePage={updatePage} />}/>
         <Route exact path="/movies" element={<Movies updatePage={updatePage}/>}/>
         <Route exact path="/series" element={<Series updatePage={updatePage}/>}/>
+        <Route exact path="/view/:id" element={<TitlePage updatePage={updatePage}/>}/>
       </Routes>
       <div>
       {isHomePage !== "landing" && (

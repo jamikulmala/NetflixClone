@@ -60,3 +60,27 @@ export const fetchContent = async (id, type) => {
         console.error(error);
     }
 }
+
+export const fetchTopRatedTv = async () => {
+    const apiUrl = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data.results;
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const fetchPopularTv = async () => {
+    const apiUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data.results;
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}

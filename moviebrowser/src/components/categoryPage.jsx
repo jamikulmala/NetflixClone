@@ -1,6 +1,8 @@
-import { Container, List, ListItem, ListItemText } from "@mui/material";
+import { Container, IconButton, List, ListItem, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchCategories, fetchCategoryImage } from "../tools/fetchdata";
+import { ArrowBack } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 export const Categories = (props) => {
 
@@ -39,7 +41,14 @@ export const Categories = (props) => {
     props.updatePage("category");
   }, [props]);
 
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
+    <div>
     <List sx={{ display: "flex", flexDirection: "column" }}>
       {categoryImages &&
         categoryImages.map((category) => (
@@ -70,5 +79,9 @@ export const Categories = (props) => {
           </div>
         ))}
     </List>
+    <IconButton onClick={handleBackClick} sx={{paddingTop:'32px'}}>
+      <ArrowBack sx={{ color: "white" }} />
+    </IconButton>
+    </div>
   );
 };

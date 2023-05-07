@@ -11,8 +11,6 @@ export const HomePage = (props) => {
       props.updatePage("home");
     });
 
-    console.log(props.movies);
-
     const viewItem = (movie) => {
       navigate(`/view/${movie}`, {state:{movie}})
     }

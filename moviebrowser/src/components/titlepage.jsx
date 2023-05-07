@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router";
-import { fetchContent } from "../tools/fetchdata"
 import { Box, IconButton, Typography, useThemeProps } from "@mui/material";
 import { ArrowBack, PlayArrow } from "@mui/icons-material";
 

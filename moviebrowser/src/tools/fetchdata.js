@@ -3,17 +3,21 @@ import axios from 'axios';
 const apiKey = '19cc15b927787e494a1e481334dbada8';
 
 export const FetchRandom = async (updateStateCallback) => {
-    
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`;
+    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=`;
     try {
-        const response = await axios.get(apiUrl);
-        const data = response.data.results;
-        updateStateCallback(data);
-
+      const responses = await Promise.all([
+        axios.get(apiUrl + "1"),
+        axios.get(apiUrl + "2"),
+      ]);
+      const data = responses.reduce((acc, response) => {
+        return [...acc, ...response.data.results];
+      }, []);
+      const slicedData = data.slice(0, 200);
+      updateStateCallback(slicedData);
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-}
+  };
 
 export const fetchCategories = async (updateStateCallback) => {
     const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
@@ -75,6 +79,30 @@ export const fetchTopRatedTv = async () => {
 
 export const fetchPopularTv = async () => {
     const apiUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data.results;
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const fetchTopRatedMovies = async () => {
+    const apiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data.results;
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const fetchPopularMovies = async () => {
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
     try {
         const response = await axios.get(apiUrl);
         const data = response.data.results;

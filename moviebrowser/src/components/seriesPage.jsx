@@ -1,6 +1,6 @@
-import { Container, Slider, Box, Grid, Card, CardActionArea, CardMedia, CardContent, Typography, IconButton } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import { fetchLatestTv, fetchPopularTv, fetchTopRatedTv } from "../tools/fetchdata";
+import { Box, Grid, Card, CardActionArea, CardMedia, CardContent, Typography, IconButton } from "@mui/material";
+import { useEffect, useState } from "react";
+import { fetchPopularTv, fetchTopRatedTv } from "../tools/fetchdata";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from "react-router";
@@ -53,6 +53,10 @@ export const Series = (props) => {
     navigate(-1);
   };
 
+  const viewItem = (series) => {
+    navigate(`/view/${series}`, {state:{series}})
+  }
+
   return (
     <div style={{ paddingTop: '32px' }}>
       <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%"}}>
@@ -67,7 +71,7 @@ export const Series = (props) => {
       <Grid container spacing={2}>
         {popular.slice(popularIndex, popularIndex + 3).map((title) => (
           <Grid item xs={12} sm={6} md={4} key={title.id}>
-            <Card>
+            <Card onClick={() => viewItem(title)}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -97,7 +101,7 @@ export const Series = (props) => {
       <Grid container spacing={2}>
         {topRated.slice(topRatedIndex, topRatedIndex + 3).map((title) => (
           <Grid item xs={12} sm={6} md={4} key={title.id}>
-            <Card>
+            <Card onClick={() => viewItem(title)}>
               <CardActionArea>
                 <CardMedia
                   component="img"

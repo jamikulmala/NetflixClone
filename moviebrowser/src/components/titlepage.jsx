@@ -1,10 +1,12 @@
 import { useLocation, useNavigate } from "react-router";
-import { Box, IconButton, Typography, useThemeProps } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { ArrowBack, PlayArrow } from "@mui/icons-material";
 
 export const TitlePage = (props) => {
     const state = useLocation();
-    const movie = state.state.movie;
+    const item = state.state;
+    let object = [];
+    let title = "";
     const navigate = useNavigate();
   
     props.updatePage("title");
@@ -12,6 +14,14 @@ export const TitlePage = (props) => {
     const handleBackClick = () => {
       navigate(-1);
     };
+
+    if(item.movie) {
+      object = item.movie;
+      title = object.title;
+    } else {
+      object = item.series;
+      title = object.name;
+    }
   
     return (
       <Box>
@@ -29,7 +39,7 @@ export const TitlePage = (props) => {
             color: "white"
           }}
         >
-        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+        <img src={`https://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={title} />
           <Box
             sx={{
               display: "flex",
@@ -48,9 +58,9 @@ export const TitlePage = (props) => {
           </Box>
           <Box sx={{ textAlign: "center" }}>
             <Typography variant="h3" sx={{ marginBottom: "16px" }}>
-              {movie.title}
+              {title}
             </Typography>
-            <Typography variant="body1">{movie.overview}</Typography>
+            <Typography variant="body1">{object.overview}</Typography>
           </Box>
         </Box>
       </Box>

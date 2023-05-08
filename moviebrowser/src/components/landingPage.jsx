@@ -1,9 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useSpring, animated } from "react-spring";
 
-export const Landing = () => {
+export const Landing = (props) => {
   const [displayText, setDisplayText] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [go, setGo] = useState(false);

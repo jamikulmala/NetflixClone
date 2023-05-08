@@ -1,4 +1,4 @@
-import { Container, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { IconButton, List, ListItem, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchCategories, fetchCategoryImage } from "../tools/fetchdata";
 import { ArrowBack } from "@mui/icons-material";
@@ -47,6 +47,10 @@ export const Categories = (props) => {
     navigate(-1);
   };
 
+  const viewItem = (genre) => {
+    navigate(`/genres/${genre.name}`, {state:{genre}})
+  }
+
   return (
     <div>
     <List sx={{ display: "flex", flexDirection: "column" }}>
@@ -73,7 +77,7 @@ export const Categories = (props) => {
               borderRadius: '10px'
             }}
           >
-            <ListItem>
+            <ListItem onClick={() => viewItem(category)} sx={{ cursor: "pointer" }}>
               <ListItemText primary={category.name} />
             </ListItem>
           </div>

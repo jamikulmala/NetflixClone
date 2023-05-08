@@ -17,12 +17,13 @@ import { FetchRandom } from './tools/fetchdata';
 import { Box, ThemeProvider } from "@mui/material";
 import { themeOptions } from './tools/theme';
 import { TitlePage } from './components/titlepage';
-
+import { CategoryMovies } from './components/categoryMovies';
 
 const App = () => {
 
   const [isHomePage, setIsHomePage] = useState("landing");
   const [popular, setPopular] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const updatePage = (newState) => {
     setIsHomePage(newState);
@@ -54,13 +55,14 @@ const App = () => {
         </div>
       </div>
       <Routes>
-        <Route exact path="/" element={<Landing updatePage={updatePage}/>}/>
+        <Route exact path="/" element={<Landing updatePage={updatePage} isLoading={isLoading}/>}/>
         <Route exact path="/home" element={<HomePage updatePage={updatePage} movies={popular} />}/>
         <Route exact path="/search" element={<SearchBar updatePage={updatePage}/>}/>
         <Route exact path="/categories" element={<Categories updatePage={updatePage} />}/>
         <Route exact path="/movies" element={<Movies updatePage={updatePage}/>}/>
         <Route exact path="/series" element={<Series updatePage={updatePage}/>}/>
         <Route exact path="/view/:id" element={<TitlePage updatePage={updatePage}/>}/>
+        <Route exact path="/genres/:name" element={<CategoryMovies updatePage={updatePage}/>}/>
       </Routes>
       <div>
       {isHomePage !== "landing" && (

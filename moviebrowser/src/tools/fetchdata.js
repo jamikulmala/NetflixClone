@@ -3,21 +3,21 @@ import axios from 'axios';
 const apiKey = '19cc15b927787e494a1e481334dbada8';
 
 export const FetchRandom = async (updateStateCallback) => {
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=`;
-    try {
-      const responses = await Promise.all([
-        axios.get(apiUrl + "1"),
-        axios.get(apiUrl + "2"),
-      ]);
-      const data = responses.reduce((acc, response) => {
-        return [...acc, ...response.data.results];
-      }, []);
-      const slicedData = data.slice(0, 200);
-      updateStateCallback(slicedData);
-    } catch (error) {
-      console.error(error);
+  const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`;
+  const movies = [];
+  let currentPage = 1;
+  try {
+    while (currentPage <= 20) {
+      const response = await axios.get(`${apiUrl}&page=${currentPage}`);
+      const data = response.data;
+      movies.push(...data.results);
+      currentPage++;
     }
-  };
+    updateStateCallback(movies);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const fetchCategories = async (updateStateCallback) => {
     const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
@@ -48,16 +48,12 @@ export const fetchCategoryImage = async (id) => {
     }
   };
 
-export const fetchContent = async (id, type) => {
-    let apiUrl = "";
-    if(type === 'movie') {
-        apiUrl = `https://api.themoviedb.org/3/movie/${id}`
-    } else {
-        apiUrl = `https://api.themoviedb.org/3/tv/${id}`
-    }
+export const fetchContent = async (category) => {
+    let apiUrl = `https://api.themoviedb.org/3/list/${category}?api_key=${apiKey}`
     try {
         const response = await axios.get(apiUrl);
-        const data = response.data;
+        const data = response.data.items;
+        console.log(data)
         return data;
 
     } catch (error) {

@@ -40,6 +40,8 @@ const App = () => {
     fetchPopular();
   }, []);
 
+  console.log(popular);
+
   return(
     <ThemeProvider theme={themeOptions}>
     <Box bgcolor="#141414">
@@ -57,7 +59,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Landing updatePage={updatePage} isLoading={isLoading}/>}/>
         <Route exact path="/home" element={<HomePage updatePage={updatePage} movies={popular} />}/>
-        <Route exact path="/search" element={<SearchBar updatePage={updatePage}/>}/>
+        <Route exact path="/search" element={<SearchBar updatePage={updatePage} movies={popular}/>}/>
         <Route exact path="/categories" element={<Categories updatePage={updatePage} />}/>
         <Route exact path="/movies" element={<Movies updatePage={updatePage}/>}/>
         <Route exact path="/series" element={<Series updatePage={updatePage}/>}/>

@@ -27,7 +27,7 @@ export const SearchBar = (props) => {
 
   return (
     <Box>
-    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#141414', padding: '40px 0' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#141414', padding: '40px 0', height: '100vh' }}>
       <TextField
         value={searchInput}
         sx={{ color: 'white', width: '70%', maxWidth: '800px' }}

@@ -43,7 +43,7 @@ export const Landing = (props) => {
   };
 
   if(go === true){
-    navigate('/home');
+    navigate('/login');
     setGo(false);
   }
 

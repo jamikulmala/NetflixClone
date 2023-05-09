@@ -10,7 +10,6 @@ export const CategoryMovies = (props) => {
     const [movies, setMovies] = useState([]);
     const state = useLocation();
     const id = state.state.genre.id;
-    console.log(id);
 
     useEffect(() => {
       props.updatePage("category");

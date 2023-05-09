@@ -77,7 +77,7 @@ export const Categories = (props) => {
               borderRadius: '10px'
             }}
           >
-            <ListItem onClick={() => viewItem(category)} sx={{ cursor: "pointer" }}>
+            <ListItem onClick={() => viewItem(category)} sx={{'&:hover': { borderBlockColor: 'white' }, cursor: 'pointer' }}>
               <ListItemText primary={category.name} />
             </ListItem>
           </div>

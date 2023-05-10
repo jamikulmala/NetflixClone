@@ -18,8 +18,8 @@ export const HomePage = (props) => {
     return (
       <div style={{ paddingTop: '12px'}}>
       <Grid container spacing={2}>
-        {props.movies.map(movie => (
-          <Grid item xs={12} sm={6} md={4} key={movie.id}>
+        {props.movies.map((movie, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <Card onClick={() => viewItem(movie)}>
               <CardActionArea>
                 <CardMedia

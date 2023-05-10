@@ -64,7 +64,7 @@ const App = () => {
         <Route exact path="/categories" element={<Categories updatePage={updatePage} />}/>
         <Route exact path="/movies" element={<Movies updatePage={updatePage}/>}/>
         <Route exact path="/series" element={<Series updatePage={updatePage}/>}/>
-        <Route exact path="/view/:id" element={<TitlePage updatePage={updatePage}/>}/>
+        <Route exact path="/view/:id" element={<TitlePage updatePage={updatePage} user={user}/>}/>
         <Route exact path="/genres/:name" element={<CategoryMovies updatePage={updatePage}/>}/>
         <Route exact path="/login" element={<Login updatePage={updatePage} setUser={setUser}/>}/>
         <Route exact path="/register" element={<Register updatePage={updatePage} setUser={setUser}/>} />

@@ -21,7 +21,7 @@ export const NavigationBar = (props) => {
                     <Box display="flex" alignItems="center">
                         <IconButton size="large"><CastIcon /></IconButton>
                         <IconButton onClick={() => navigate("/search")} size="large"><SearchIcon /></IconButton>
-                        <IconButton size="large"><AccountBoxIcon /></IconButton>
+                        <IconButton onClick={() => navigate("/user")} size="large"><AccountBoxIcon /></IconButton>
                     </Box>
                 </Toolbar>
             </Container>

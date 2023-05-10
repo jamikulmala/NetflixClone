@@ -3,9 +3,13 @@ import { Box, Button, SvgIcon, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { ReactComponent as NetflixLogo } from '../tools/netflix_logo.svg';
 
+// Any kind of backend operations were not required so I cannot write to json so please use the credits on users.json to login
+// or register with new credentials. The credentials will not thus be saved when you close the application so they are one use only.
+
 export const Register = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [number, setNumber] = useState('');
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
@@ -16,8 +20,20 @@ export const Register = (props) => {
     setPassword(event.target.value);
   };
 
+  const handleNumberChange = (event) => {
+    setNumber(event.target.value);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newUser = {
+      "email": email,
+      "phoneNumber": number,
+      "password": password,
+      "favorites": []
+    }
+    props.setUser(newUser);
+    navigate('/home');
   };
 
   return (
@@ -35,9 +51,19 @@ export const Register = (props) => {
             flexDirection: 'column',
             alignItems: 'center'}}>
         <TextField
-          label="Email or phone number"
+          label="Email"
           value={email}
           onChange={handleEmailChange}
+          sx={{
+            backgroundColor: 'black',
+            borderRadius: '4px',
+            marginBottom: '20px',
+            }}
+        />
+        <TextField
+          label="Phone number"
+          value={number}
+          onChange={handleNumberChange}
           sx={{
             backgroundColor: 'black',
             borderRadius: '4px',

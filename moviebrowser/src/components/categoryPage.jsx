@@ -83,7 +83,7 @@ export const Categories = (props) => {
           </div>
         ))}
     </List>
-    <IconButton onClick={handleBackClick} sx={{paddingTop:'32px'}}>
+    <IconButton onClick={handleBackClick} sx={{padding:'32px'}}>
       <ArrowBack sx={{ color: "white" }} />
     </IconButton>
     </div>

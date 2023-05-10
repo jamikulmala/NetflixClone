@@ -20,11 +20,13 @@ import { TitlePage } from './components/titlepage';
 import { CategoryMovies } from './components/categoryMovies';
 import { Login } from './components/login';
 import { Register } from './components/Register';
+import { UserPage } from './components/userPage';
 
 const App = () => {
 
   const [isHomePage, setIsHomePage] = useState("landing");
   const [popular, setPopular] = useState([]);
+  const [user, setUser] = useState([]);
 
   const updatePage = (newState) => {
     setIsHomePage(newState);
@@ -64,8 +66,9 @@ const App = () => {
         <Route exact path="/series" element={<Series updatePage={updatePage}/>}/>
         <Route exact path="/view/:id" element={<TitlePage updatePage={updatePage}/>}/>
         <Route exact path="/genres/:name" element={<CategoryMovies updatePage={updatePage}/>}/>
-        <Route exact path="/login" element={<Login updatePage={updatePage}/>} />
-        <Route exact path="/register" element={<Register updatePage={updatePage}/>} />
+        <Route exact path="/login" element={<Login updatePage={updatePage} setUser={setUser}/>}/>
+        <Route exact path="/register" element={<Register updatePage={updatePage} setUser={setUser}/>} />
+        <Route exact path="/user" element={<UserPage updatePage={updatePage} user={user}/>} />
       </Routes>
       <div>
       {isHomePage !== "landing" && (

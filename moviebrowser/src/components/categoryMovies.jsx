@@ -51,7 +51,7 @@ export const CategoryMovies = (props) => {
           </Grid>
         ))}
       </Grid>
-      <IconButton onClick={handleBackClick} sx={{paddingTop:'32px'}}>
+      <IconButton onClick={handleBackClick} sx={{padding:'32px'}}>
         <ArrowBack sx={{ color: "white" }} />
       </IconButton>
       </div>

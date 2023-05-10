@@ -1,11 +1,12 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material"
 import { FilterBar } from "./filterbar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 export const HomePage = (props) => {
 
     const navigate = useNavigate();
+    const [called, setCalled] = useState(false);
 
     useEffect(() => {
       props.updatePage("home");

@@ -26,7 +26,7 @@ const App = () => {
 
   const [isHomePage, setIsHomePage] = useState("landing");
   const [popular, setPopular] = useState([]);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
 
   const updatePage = (newState) => {
     setIsHomePage(newState);
@@ -59,7 +59,7 @@ const App = () => {
       </div>
       <Routes>
         <Route exact path="/" element={<Landing updatePage={updatePage} />}/>
-        <Route exact path="/home" element={<HomePage updatePage={updatePage} movies={popular} />}/>
+        <Route exact path="/home" element={<HomePage updatePage={updatePage} movies={popular} user={user}/>}/>
         <Route exact path="/search" element={<SearchBar updatePage={updatePage} movies={popular}/>}/>
         <Route exact path="/categories" element={<Categories updatePage={updatePage} />}/>
         <Route exact path="/movies" element={<Movies updatePage={updatePage}/>}/>

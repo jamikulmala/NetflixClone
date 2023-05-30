@@ -1,8 +1,7 @@
-import { AppBar, Box, Button, Container, IconButton, SvgIcon, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Container, IconButton, SvgIcon, Toolbar } from "@mui/material"
 import CastIcon from '@mui/icons-material/Cast';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as NetflixLogo } from '../tools/netflix_logo.svg';
 

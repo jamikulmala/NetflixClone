@@ -1,5 +1,5 @@
-import { Box, CircularProgress, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useSpring, animated } from "react-spring";
 
